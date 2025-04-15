@@ -312,6 +312,7 @@
                     data: {
                         name: name,
                         message: message
+                       
                     }
                 })
             })
@@ -324,7 +325,7 @@
                                     this.reset();
                 // loadMessages(); // 自動載入留言已停用
             });
-
+            const userInput = document.getElementById("userInput").value;
             fetch("https://sheetdb.io/api/v1/xbwcecd4vlnvs", {
                 method: "POST",
                 headers: {
@@ -332,7 +333,7 @@
                 },
                 body: JSON.stringify({
                     data: {
-                        userInput: userinput                        
+                        userinput: userInput                        
                     }
                 })
             })

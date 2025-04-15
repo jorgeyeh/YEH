@@ -278,8 +278,8 @@
         // 🔌 寫入 SheetDB
         document.getElementById("contactForm").addEventListener("submit", function(e) {
             e.preventDefault();
-            const name = document.getElementById("Name").value;
-            const message = document.getElementById("Message").value;
+            const name = document.getElementById("name").value;
+            const message = document.getElementById("message").value;
 
             fetch("https://sheetdb.io/api/v1/fndchh7omcqee", {
                 method: "POST",

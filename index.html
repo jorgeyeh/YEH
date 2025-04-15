@@ -1,137 +1,161 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <title>葉佐駿的網頁</title>
-    <style>
-        body {
-            font-family: 'Helvetica', sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        .container {
-            width: 80%;
-            margin: 50px auto;
-            background-color: #ffffff;
-            padding: 30px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        .section {
-            margin-top: 30px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .contact {
-            font-size: 14px;
-            color: #666;
-            margin-top: 20px;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            text-align: center;
-            background-color: #f0f0f0;
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* 美化表單與輸入框 */
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-            font-size: 16px;
-        }
-
-        button {
-            background-color: #007acc;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #005f99;
-            transform: translateY(-2px);
-        }
-
-        /* 聊天區塊泡泡樣式 */
-        #chatResponse {
-            background-color: #e6f2ff;
-            padding: 10px 15px;
-            border-radius: 10px;
-            margin-top: 10px;
-            display: inline-block;
-            max-width: 80%;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        .message-board {
-            margin-top: 20px;
-        }
-
-        .message-entry {
-            background: #f3f3f3;
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media screen and (max-width: 600px) {
+    <head>
+        <meta charset="UTF-8">
+        <title>葉佐駿的網頁</title>
+        <link rel="icon" href="LV.ico" type="image/x-icon">
+        <style>
+            body {
+                font-family: 'Helvetica', sans-serif;
+                background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+                margin: 0;
+                padding: 0;
+                color: #e0e0e0;
+            }
+    
+            .loader {
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: #0f2027;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                color: #00ffff;
+                font-size: 24px;
+                font-weight: bold;
+                letter-spacing: 2px;
+                animation: fadeOut 1s ease 3s forwards;
+            }
+    
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+    
             .container {
-                width: 90%;
-                padding: 20px;
+                width: 80%;
+                margin: 50px auto;
+                background-color: rgba(255, 255, 255, 0.05);
+                padding: 30px;
+                box-shadow: 0 0 30px rgba(0,255,255,0.2);
+                border: 1px solid rgba(0,255,255,0.1);
+                border-radius: 20px;
+                backdrop-filter: blur(8px);
             }
-
-            input[type="text"], textarea, button {
+    
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 20px;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.137);
+            }
+    
+            h1, h2 {
+                color: #06f07b;
+                text-shadow: 0 0 5px #00ffff;
+            }
+    
+            p, li, label {
+                line-height: 1.6;
+                color: #d0f0f0;
+            }
+    
+            .section {
+                margin-top: 30px;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.6s ease-out;
+            }
+    
+            .section.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+    
+            .contact {
                 font-size: 14px;
+                color: #aaa;
+                margin-top: 20px;
             }
-        }
-    </style>
-</head>
+    
+            footer {
+                margin-top: 50px;
+                padding: 20px;
+                text-align: center;
+                background-color: rgba(255,255,255,0.05);
+                font-size: 14px;
+                color: #00ffff;
+                border-top: 1px solid rgba(0,255,255,0.1);
+            }
+    
+            input[type="text"], textarea {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                border: 1px solid #00ffff;
+                border-radius: 6px;
+                background-color: rgba(0,0,0,0.3);
+                color: #16cccc;
+                font-size: 16px;
+            }
+    
+            input::placeholder, textarea::placeholder {
+                color: #88cccc;
+            }
+    
+            button {
+                background-color: #00bcd4;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+    
+            button:hover {
+                background-color: #167e8a;
+                transform: translateY(-2px);
+            }
+    
+            #chatResponse {
+                background-color: rgba(0,255,255,0.1);
+                padding: 10px 15px;
+                border-radius: 10px;
+                margin-top: 10px;
+                display: inline-block;
+                max-width: 80%;
+                animation: fadeIn 0.4s ease-out;
+                color: #00ffff;
+            }
+    
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+    
+            @media screen and (max-width: 600px) {
+                .container {
+                    width: 90%;
+                    padding: 20px;
+                }
+    
+                input[type="text"], textarea, button {
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </head>
 <body>
+    <div class="loader">Jorge AI 啟動中...</div>    
+
     <div class="container">
         <center>
             <img class="profile-pic" src="jorge.jpg" alt="你的照片">
@@ -180,9 +204,9 @@
         </div>
 
         <div class="section" id="chatbox">
-            <h2>來跟我聊幾句！</h2>
+            <h2>來跟我聊幾句！我是AI小幫手 可以問我一些問題</h2>
             <input type="text" id="userInput" placeholder="請輸入訊息..." style="width: 100%;">
-            <button onclick="chat()">送出</button>
+            <button onclick="chat()">傳送</button>
             <div id="chatResponse"></div>
         </div>
     </div>
@@ -236,7 +260,7 @@
                 if (input.includes("幹嘛")) response = "你先說你想幹嘛，我才能決定我要不要幫你。";
                 if (input.includes("再見")) response = "拜拜～記得常回來看我，不然我會變得更沒存在感。";
                 if (input.includes("好無聊")) response = "那你來對地方了，我就是專門陪無聊的人講廢話的。";
-                if (input.includes("葉佐駿")) response = "葉佐駿是個傳說中會寫網頁、訓練 AI 又愛喝咖啡的男人。";
+                if (input.includes("葉佐駿")) response = "葉佐駿是個傳說中會寫網頁、訓練 AI 又愛喝咖啡的帥哥。";
                 if (input.includes("你會什麼")) response = "我會回話、會裝懂、還會看著你假裝我不是 JavaScript 寫的。";
                 if (input.includes("謝謝")) response = "不客氣啦，我也只是個虛擬勞工罷了。";
                 if (input.includes("你幾歲")) response = "我年齡跟 JS 執行緒一樣——沒有真正意義上的歲數，但我存在於你的瀏覽器裡。";
